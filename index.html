@@ -1,0 +1,89 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Log in page for Dataplan</title>
+</head>
+
+<body>
+    <div class="login_page">
+        <div class="box">
+            <div class="welcome_message">
+                <i class="fas fa-user fa-2x"></i>
+                <p>Good afternoon</p>
+            </div>
+            <div class="form">
+                <form class="login_form">
+
+                    <p class="login_details username_label"> &hairsp; Username</p>
+                    <input type="text" />
+
+                    <p class="login_details password_label"> &hairsp; Password</p>
+                    <input type="password" />
+
+                    <button class="login_label" onclick="buttonAlert()">Login</button>
+
+                    <p class="message">Choose Language <div class="langWrap">
+                            <a href="#" language='english' class="active">EN</a>
+                            <a href="#" language='french'>FR</a>
+                        </div>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function buttonAlert() {
+            alert("Your data has not been saved");
+        }
+    </script>
+    <script>
+        const langEl = document.querySelector('.langWrap');
+        const link = document.querySelectorAll('a');
+        const welcomeEl = document.querySelector('.welcome_message');
+        const userEl = document.querySelector('.username_label');
+        const passEl = document.querySelector('.password_label');
+        const loginEl = document.querySelector('.login_label');
+
+
+        link.forEach(el => {
+            el.addEventListener('click', () => {
+                langEl.querySelector('.active').classList.remove('active');
+                el.classList.add('active');
+
+                const attr = el.getAttribute('language');
+
+                welcomeEl.textContent = data[attr].welcome_message;
+                userEl.textContent = data[attr].username_label;
+                passEl.textContent = data[attr].password_label;
+                loginEl.textContent = data[attr].login_label;
+            });
+        });
+
+        
+
+        var data = {
+            "english": {
+                "welcome_message": "Good afternoon",
+                "username_label": "Username",
+                "password_label": "Password",
+                "login_label": "Login"
+            },
+
+            "french": {
+                "welcome_message": "Bonne après-midi",
+                "username_label": "Nom d'utilisateur",
+                "password_label": "Mot de passe",
+                "login_label": "Se connecter"
+            }
+        }
+    </script>
+    
+    <script src="https://kit.fontawesome.com/22e3041ac2.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
